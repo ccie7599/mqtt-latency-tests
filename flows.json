@@ -1,43 +1,31 @@
 [
     {
-        "id": "07533ae1fbb04e11",
+        "id": "cb81e2af.25d26",
         "type": "tab",
-        "label": "Connector Service for Origin Events",
+        "label": "server side",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
-        "id": "1a2d207f770bfa25",
+        "id": "7cef84f.ea74b7c",
         "type": "tab",
-        "label": "Realtime Event Push via pub/sub",
+        "label": "Client State",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
-        "id": "48b4356fe2e4f9db",
+        "id": "892db6cc.18af58",
         "type": "tab",
-        "label": "Event API",
+        "label": "Rate Limited Release",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
-        "id": "d7c53fda52da9707",
+        "id": "5cc31913.54b088",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Intelligent Download Monitor",
         "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "702b81be6954a355",
-        "type": "tab",
-        "label": "Latency Reporter",
-        "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "3c9fafa.7dd6a5",
@@ -231,304 +219,240 @@
         "hidden": false
     },
     {
-        "id": "4a829b544243102d",
-        "type": "redis-in",
-        "z": "07533ae1fbb04e11",
-        "server": "",
-        "command": "blpop",
-        "name": "Push from DB",
-        "topic": "",
-        "obj": true,
-        "timeout": 0,
-        "x": 130,
-        "y": 80,
-        "wires": [
-            [
-                "1b1486aa54c3e87f"
-            ]
-        ]
+        "id": "a3ad4b89.049528",
+        "type": "tls-config",
+        "name": "demo.mqtttest.com",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "demo.mqtttest.com",
+        "verifyservercert": true
     },
     {
-        "id": "1b1486aa54c3e87f",
-        "type": "mqtt out",
-        "z": "07533ae1fbb04e11",
-        "name": "Publish Real-time updates to data broker",
-        "topic": "demo/cdi/race",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "3c9fafa.7dd6a5",
-        "x": 660,
-        "y": 180,
-        "wires": []
+        "id": "8e33ee6e.46c07",
+        "type": "gauth",
+        "z": "cb81e2af.25d26"
     },
     {
-        "id": "c0fb0a89f4c3cfc3",
-        "type": "kafka-consumer",
-        "z": "07533ae1fbb04e11",
-        "outOfRangeOffset": "earliest",
-        "fromOffset": "latest",
-        "x": 120,
-        "y": 140,
-        "wires": [
-            [
-                "1b1486aa54c3e87f"
-            ]
-        ]
+        "id": "c24691b2.7093d",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
-        "id": "811fdc459da8180c",
-        "type": "inject",
-        "z": "07533ae1fbb04e11",
-        "name": "Inject new odds every second",
-        "props": [
-            {
-                "p": "payload.timestamp",
-                "v": "",
-                "vt": "date"
+        "id": "2485a79e.244908",
+        "type": "ui_group",
+        "name": "OTA Update Demo",
+        "tab": "c24691b2.7093d",
+        "order": 1,
+        "disp": true,
+        "width": 14,
+        "collapse": false
+    },
+    {
+        "id": "aedf518e.8c154",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
             },
-            {
-                "p": "topic",
-                "vt": "str"
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
             }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 170,
-        "y": 180,
-        "wires": [
-            [
-                "f63c277a21555427"
-            ]
-        ]
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
     },
     {
-        "id": "879fd984aa5242ac",
+        "id": "438c3a73.bf4cf4",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "track_changes",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ae89e9ed.3c8198",
+        "type": "ui_group",
+        "name": "File Browser",
+        "tab": "444dd439.bbee0c",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "444dd439.bbee0c",
+        "type": "ui_tab",
+        "name": "Files",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "90a75f67.3dfdd",
+        "type": "ui_group",
+        "name": "Client State Table",
+        "tab": "c24691b2.7093d",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fb3391e3.eb245",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "99201b13.ad9868",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "99201b13.ad9868",
+        "type": "ui_tab",
+        "name": "List",
+        "icon": "dashboard"
+    },
+    {
+        "id": "93ad1d2b.d053f",
+        "type": "ui_group",
+        "name": "Completion Table",
+        "tab": "c24691b2.7093d",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "89a3c87b.c3a7e8",
+        "type": "ftp",
+        "z": "cb81e2af.25d26",
+        "host": "ota-iec.ftp.upload.akamai.com",
+        "port": "",
+        "secureOptions": "",
+        "user": "bapleyota-iec",
+        "connTimeout": "",
+        "pasvTimeout": "",
+        "keepalive": ""
+    },
+    {
+        "id": "ef3598e6.c60e08",
         "type": "template",
-        "z": "07533ae1fbb04e11",
-        "name": "Format json payload",
+        "z": "cb81e2af.25d26",
+        "name": "Form Update Message",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\"event\":\"sample race 1\",\"odds\":\"{{payload.random}}\"}",
+        "template": "{\"url\": \"https://ota.mqtttest.com/{{filename}}\",\"file\": \"{{{filename}}}\",\"time\":\"{{{timestamp}}}\"}",
         "output": "json",
-        "x": 140,
-        "y": 260,
+        "x": 290,
+        "y": 400,
         "wires": [
             [
-                "46009b379250fc83"
+                "3a617688.e35b4a",
+                "bf6278b5.916d58",
+                "7511971e.449e48"
             ]
         ]
     },
     {
-        "id": "f63c277a21555427",
-        "type": "random",
-        "z": "07533ae1fbb04e11",
-        "name": "Generate Random Odds",
-        "low": 1,
-        "high": "100",
-        "inte": "false",
-        "property": "payload.random",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            [
-                "879fd984aa5242ac"
-            ]
-        ]
-    },
-    {
-        "id": "b92ab906bcd30148",
-        "type": "debug",
-        "z": "07533ae1fbb04e11",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "46009b379250fc83",
-        "type": "function",
-        "z": "07533ae1fbb04e11",
-        "name": "Add timestamp for latency reporting",
-        "func": "var now = Date.now();\nmsg.payload.timestamp = now\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 300,
-        "wires": [
-            [
-                "b92ab906bcd30148",
-                "1b1486aa54c3e87f"
-            ]
-        ]
-    },
-    {
-        "id": "f304ab4ff03427e3",
-        "type": "mqtt in",
-        "z": "1a2d207f770bfa25",
-        "name": "Subscribe to pub/sub events for Race ID",
-        "topic": "demo/cdi/race",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 180,
-        "y": 80,
-        "wires": [
-            [
-                "df2e46f4a2a3d048",
-                "be63f89e2e43d2ef",
-                "57a7f8393a9d38d3",
-                "a207e6fcb76eceda",
-                "6fd5a39d6fde32a7",
-                "b3a027e2c3f8a6e2"
-            ]
-        ]
-    },
-    {
-        "id": "df2e46f4a2a3d048",
-        "type": "file",
-        "z": "1a2d207f770bfa25",
-        "name": "",
-        "filename": "/data/racedata",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 590,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "be63f89e2e43d2ef",
-        "type": "debug",
-        "z": "1a2d207f770bfa25",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "57a7f8393a9d38d3",
-        "type": "ui_text",
-        "z": "1a2d207f770bfa25",
-        "group": "a5ecdab7.7197d8",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Event Name",
-        "format": "{{msg.payload.event}}",
-        "layout": "row-spread",
-        "x": 610,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "b3a027e2c3f8a6e2",
-        "type": "function",
-        "z": "1a2d207f770bfa25",
-        "name": "Calculate Latency",
-        "func": "msg.payload.timestamp = Number(msg.payload.timestamp);\nvar now = Date.now();\nvar then = msg.payload.timestamp;\nmsg.payload.latency = now - then;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 270,
-        "y": 240,
-        "wires": [
-            [
-                "8c862b9278f2a3c9",
-                "dc2aebb19b9c5c3e"
-            ]
-        ]
-    },
-    {
-        "id": "a207e6fcb76eceda",
-        "type": "ui_text",
-        "z": "1a2d207f770bfa25",
-        "group": "a5ecdab7.7197d8",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Event Odds",
-        "format": "{{msg.payload.odds}}",
-        "layout": "row-spread",
-        "x": 610,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "6fd5a39d6fde32a7",
-        "type": "ui_text",
-        "z": "1a2d207f770bfa25",
-        "group": "a5ecdab7.7197d8",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Message Timestamp",
-        "format": "{{msg.payload.timestamp}}",
-        "layout": "row-spread",
-        "x": 640,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "8c862b9278f2a3c9",
-        "type": "ui_text",
-        "z": "1a2d207f770bfa25",
-        "group": "a5ecdab7.7197d8",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Message Latency",
-        "format": "{{msg.payload.latency}}",
-        "layout": "row-spread",
-        "x": 630,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "dc2aebb19b9c5c3e",
+        "id": "3a617688.e35b4a",
         "type": "mqtt out",
-        "z": "1a2d207f770bfa25",
-        "name": "Publish Latency Results to data broker",
-        "topic": "demo/cdi/latency",
-        "qos": "",
+        "z": "cb81e2af.25d26",
+        "name": "Send Notification to MQTT Update Channel",
+        "topic": "demo/ota/updatechannel",
+        "qos": "0",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -536,88 +460,446 @@
         "correl": "",
         "expiry": "",
         "broker": "3c9fafa.7dd6a5",
-        "x": 610,
+        "x": 630,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "4ae1ecf5.cd82c4",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "OTA Server",
+        "info": "",
+        "x": 150,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fee4db6e.466618",
+        "type": "change",
+        "z": "cb81e2af.25d26",
+        "name": "place timestamp ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "demo/ota/update",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "52f4d5d9.5aa1ac",
+                "208dd904.0d9296"
+            ]
+        ]
+    },
+    {
+        "id": "2cf6eb1b.0ed774",
+        "type": "mqtt in",
+        "z": "cb81e2af.25d26",
+        "name": "Listen for OTA Reporting Messages",
+        "topic": "demo/ota/stats",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 220,
+        "y": 540,
+        "wires": [
+            [
+                "f865c80e.3153f8",
+                "aaf8fe7b.a487e"
+            ]
+        ]
+    },
+    {
+        "id": "7a37e6d6.f000e8",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "OTA Reporter",
+        "info": "",
+        "x": 150,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f865c80e.3153f8",
+        "type": "json",
+        "z": "cb81e2af.25d26",
+        "name": "Convert MQTT message to JSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 220,
+        "y": 600,
+        "wires": [
+            [
+                "1ab61ecc.3e2d91",
+                "16742f5b.bc5331"
+            ]
+        ]
+    },
+    {
+        "id": "247617ac.aea4f8",
+        "type": "GSheet",
+        "z": "cb81e2af.25d26",
+        "creds": "8e33ee6e.46c07",
+        "method": "append",
+        "action": "",
+        "sheet": "1pYflAvy8_VEEZMII4ShK9ZD7QJ7QAu3JpVdW9UvHTDY",
+        "cells": "Sheet1!A1:A6",
+        "flatten": false,
+        "name": "Write to Google Sheet",
+        "x": 220,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "52f4d5d9.5aa1ac",
+        "type": "debug",
+        "z": "cb81e2af.25d26",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "bf6278b5.916d58",
+        "type": "debug",
+        "z": "cb81e2af.25d26",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
         "y": 380,
         "wires": []
     },
     {
-        "id": "7fd7ee0be984bd15",
-        "type": "http in",
-        "z": "48b4356fe2e4f9db",
-        "name": "",
-        "url": "/api",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 100,
-        "y": 60,
+        "id": "5b3b8f6c.5f91a",
+        "type": "ui_button",
+        "z": "cb81e2af.25d26",
+        "name": "Start Download",
+        "group": "2485a79e.244908",
+        "order": 3,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Start Download",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "/home/ubuntu/ota/100MB",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 220,
         "wires": [
             [
-                "345a2fb2629a2e12"
+                "69fbd83.7580f28"
             ]
         ]
     },
     {
-        "id": "067a9ae216cf5cb1",
-        "type": "http response",
-        "z": "48b4356fe2e4f9db",
-        "name": "Return Retained message on {sku} topic to API consumer",
-        "statusCode": "",
-        "headers": {},
-        "x": 250,
-        "y": 140,
+        "id": "69fbd83.7580f28",
+        "type": "change",
+        "z": "cb81e2af.25d26",
+        "name": "Format Upload message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "localFilename",
+                "pt": "msg",
+                "to": "/home/ubuntu/ota/100MB",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "100MB",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "fee4db6e.466618"
+            ]
+        ]
+    },
+    {
+        "id": "7511971e.449e48",
+        "type": "ui_text",
+        "z": "cb81e2af.25d26",
+        "group": "2485a79e.244908",
+        "order": 11,
+        "width": 14,
+        "height": 2,
+        "name": "",
+        "label": "Broadcast MQTT Update Message ",
+        "format": "Update message sent at {{msg.timestamp}}, to {{msg.topic}}",
+        "layout": "row-spread",
+        "x": 200,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "345a2fb2629a2e12",
-        "type": "file in",
-        "z": "48b4356fe2e4f9db",
+        "id": "e11ec5c9.a70bc8",
+        "type": "mqtt in",
+        "z": "cb81e2af.25d26",
+        "name": "Listen for bandwidth stat updates",
+        "topic": "demo/ota/bandwidth",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 210,
+        "y": 1080,
+        "wires": [
+            [
+                "802d5157.a9535"
+            ]
+        ]
+    },
+    {
+        "id": "d1272f70.c7f46",
+        "type": "csv",
+        "z": "cb81e2af.25d26",
+        "name": "Convert to CSV",
+        "sep": "\\",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": "",
+        "x": 160,
+        "y": 1200,
+        "wires": [
+            [
+                "54b2442e.560f1c",
+                "81e55e59.2a34c"
+            ]
+        ]
+    },
+    {
+        "id": "802d5157.a9535",
+        "type": "change",
+        "z": "cb81e2af.25d26",
+        "name": "Clean up incoming message",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": " ",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 1140,
+        "wires": [
+            [
+                "d1272f70.c7f46"
+            ]
+        ]
+    },
+    {
+        "id": "69ceda27.906c54",
+        "type": "ui_gauge",
+        "z": "cb81e2af.25d26",
+        "name": "Aggegate Real-Time Bandwidth (gauge)",
+        "group": "2485a79e.244908",
+        "order": 2,
+        "width": 6,
+        "height": 8,
+        "gtype": "gage",
+        "title": "Aggegate Real-Time Bandwidth",
+        "label": "Mb/s",
+        "format": "{{value | number:1}}",
+        "min": 0,
+        "max": "2500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 600,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "54b2442e.560f1c",
+        "type": "change",
+        "z": "cb81e2af.25d26",
         "name": "",
-        "filename": "/data/racedata",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 120,
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].col1",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 170,
+        "y": 1260,
+        "wires": [
+            [
+                "6b0875d9.5e92ac"
+            ]
+        ]
+    },
+    {
+        "id": "a212468e.46e058",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "Aggegrate and Report on real-time bandwidth",
+        "info": "",
+        "x": 230,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "94d39676.d94888",
+        "type": "mqtt out",
+        "z": "cb81e2af.25d26",
+        "name": "Signal Clients to start/stop BW Monitor",
+        "topic": "demo/ota/bwmon",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 820,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "702883b9.4e31ac",
+        "type": "ui_button",
+        "z": "cb81e2af.25d26",
+        "name": "Start BW Monitoring (send command to clients)",
+        "group": "2485a79e.244908",
+        "order": 9,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Start BW Monitoring (send command to clients)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "",
+        "x": 260,
+        "y": 60,
+        "wires": [
+            [
+                "94d39676.d94888"
+            ]
+        ]
+    },
+    {
+        "id": "a3db03eb.82afc",
+        "type": "ui_button",
+        "z": "cb81e2af.25d26",
+        "name": "Stop BW Monitoring (send command to clients)",
+        "group": "2485a79e.244908",
+        "order": 10,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Stop BW Monitoring (send command to clients)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "SIGHUP",
+        "payloadType": "str",
+        "topic": "",
+        "x": 260,
         "y": 100,
         "wires": [
             [
-                "067a9ae216cf5cb1"
+                "94d39676.d94888"
             ]
         ]
     },
     {
-        "id": "e4432b4e17744c42",
-        "type": "mqtt in",
-        "z": "702b81be6954a355",
-        "name": "Subscribe to Latency feed from data broker",
-        "topic": "demo/cdi/latency",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 290,
-        "y": 160,
-        "wires": [
-            [
-                "2df26958a2fcc877"
-            ]
-        ]
-    },
-    {
-        "id": "cabbd6d8a5c54c0c",
+        "id": "fff05c25.60bbe",
         "type": "ui_chart",
-        "z": "702b81be6954a355",
-        "name": "Publish-to-Subscribe Latency Results",
-        "group": "54f7ecc644f21e27",
-        "order": 0,
+        "z": "cb81e2af.25d26",
+        "name": "Aggregate Bandwidth over Time (Chart)",
+        "group": "2485a79e.244908",
+        "order": 1,
         "width": 0,
         "height": 0,
-        "label": "Publish-to-Subscribe Latency Results",
+        "label": "Aggregate Bandwidth over Time ",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -626,7 +908,7 @@
         "dot": false,
         "ymin": "",
         "ymax": "",
-        "removeOlder": 1,
+        "removeOlder": "3",
         "removeOlderPoints": "",
         "removeOlderUnit": "60",
         "cutout": 0,
@@ -644,24 +926,99 @@
             "#c5b0d5"
         ],
         "outputs": 1,
-        "useDifferentColor": false,
-        "x": 510,
-        "y": 400,
+        "x": 600,
+        "y": 1420,
         "wires": [
             []
         ]
     },
     {
-        "id": "2df26958a2fcc877",
+        "id": "7c34fd56.db40d4",
+        "type": "file",
+        "z": "cb81e2af.25d26",
+        "name": "Update Aggegate Bandwidth Figure to disk",
+        "filename": "/home/ubuntu/bandwidth",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 250,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ab61ecc.3e2d91",
+        "type": "switch",
+        "z": "cb81e2af.25d26",
+        "name": "Does Reporting Message indicate 200 OK (Complete)",
+        "property": "payload[0][1]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 540,
+        "wires": [
+            [
+                "f5ee3a3f.708ba8"
+            ]
+        ]
+    },
+    {
+        "id": "ac62ab24.7df528",
+        "type": "template",
+        "z": "cb81e2af.25d26",
+        "name": "Form Completion Receipt",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"title\":\"{{payload}}\",\"description\":\"Completed\",\"icon\":\"https://cdn.iconscout.com/icon/free/png-256/gas-pump-2664449-2208711.png\"}",
+        "output": "str",
+        "x": 570,
+        "y": 640,
+        "wires": [
+            [
+                "9dc5254e.948ca8"
+            ]
+        ]
+    },
+    {
+        "id": "9dc5254e.948ca8",
+        "type": "file",
+        "z": "cb81e2af.25d26",
+        "name": "Build Completion Table",
+        "filename": "/home/ubuntu/completed",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 570,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f5ee3a3f.708ba8",
         "type": "change",
-        "z": "702b81be6954a355",
-        "name": "",
+        "z": "cb81e2af.25d26",
+        "name": "Set Client ID for Completion Receipt",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload.latency",
+                "to": "payload[0][2]",
                 "tot": "msg"
             }
         ],
@@ -670,11 +1027,1118 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
+        "x": 610,
+        "y": 600,
+        "wires": [
+            [
+                "ac62ab24.7df528"
+            ]
+        ]
+    },
+    {
+        "id": "77f11210.7b3b3c",
+        "type": "ui_list",
+        "z": "cb81e2af.25d26",
+        "group": "93ad1d2b.d053f",
+        "name": "UI for Completion Table",
+        "order": 1,
+        "width": 6,
+        "height": 15,
+        "lineType": "two",
+        "actionType": "none",
+        "allowHTML": false,
+        "outputs": 0,
+        "topic": "",
+        "x": 570,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "eb185fd3.4d565",
+        "type": "file in",
+        "z": "cb81e2af.25d26",
+        "name": "Read Completion Table",
+        "filename": "/home/ubuntu/completed",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 570,
+        "y": 820,
+        "wires": [
+            [
+                "a65dee6c.305d4"
+            ]
+        ]
+    },
+    {
+        "id": "7b269288.58baec",
+        "type": "ui_button",
+        "z": "cb81e2af.25d26",
+        "name": "refresh Completion Table",
+        "group": "2485a79e.244908",
+        "order": 4,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "refresh Completion Table",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 570,
+        "y": 780,
+        "wires": [
+            [
+                "eb185fd3.4d565"
+            ]
+        ]
+    },
+    {
+        "id": "1f96e8c1.18eec7",
+        "type": "join",
+        "z": "cb81e2af.25d26",
+        "name": "Aggregate Completion Receipts into Array",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "2",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 650,
+        "y": 900,
+        "wires": [
+            [
+                "77f11210.7b3b3c"
+            ]
+        ]
+    },
+    {
+        "id": "a65dee6c.305d4",
+        "type": "json",
+        "z": "cb81e2af.25d26",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 510,
+        "y": 860,
+        "wires": [
+            [
+                "1f96e8c1.18eec7"
+            ]
+        ]
+    },
+    {
+        "id": "f2dfb517.7572f8",
+        "type": "ui_button",
+        "z": "cb81e2af.25d26",
+        "name": "New Campaign",
+        "group": "2485a79e.244908",
+        "order": 5,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "New Campaign",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"title\":\"Completed Vehicles\",\"description\":\"\"}",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 820,
+        "wires": [
+            [
+                "8b8739af.9e7e18"
+            ]
+        ]
+    },
+    {
+        "id": "8b8739af.9e7e18",
+        "type": "file",
+        "z": "cb81e2af.25d26",
+        "name": "Reset Completion Table",
+        "filename": "/home/ubuntu/completed",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 190,
+        "y": 860,
+        "wires": [
+            [
+                "a65dee6c.305d4"
+            ]
+        ]
+    },
+    {
+        "id": "896e178e.bbdc78",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "Bandwidth Monitor",
+        "info": "",
+        "x": 170,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "5b6991b4.b87e9",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "Completion Reporting",
+        "info": "",
+        "x": 560,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "7c5a8912.732bb8",
+        "type": "comment",
+        "z": "cb81e2af.25d26",
+        "name": "Completion Reporting",
+        "info": "",
+        "x": 180,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "81e55e59.2a34c",
+        "type": "debug",
+        "z": "cb81e2af.25d26",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "aaf8fe7b.a487e",
+        "type": "debug",
+        "z": "cb81e2af.25d26",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "16742f5b.bc5331",
+        "type": "moment",
+        "z": "cb81e2af.25d26",
+        "name": "",
+        "topic": "",
+        "input": "payload[0][3]",
+        "inputType": "msg",
+        "inTz": "Africa/Abidjan",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "C",
+        "output": "payload[0][3]",
+        "outputType": "msg",
+        "outTz": "Africa/Abidjan",
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "247617ac.aea4f8"
+            ]
+        ]
+    },
+    {
+        "id": "208dd904.0d9296",
+        "type": "moment",
+        "z": "cb81e2af.25d26",
+        "name": "",
+        "topic": "",
+        "input": "payload.timestamp",
+        "inputType": "msg",
+        "inTz": "Africa/Abidjan",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "C",
+        "output": "payload.timestamp",
+        "outputType": "msg",
+        "outTz": "Africa/Abidjan",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "ef3598e6.c60e08"
+            ]
+        ]
+    },
+    {
+        "id": "6b0875d9.5e92ac",
+        "type": "aggregator",
+        "z": "cb81e2af.25d26",
+        "name": "Aggregate messages 1/sec.",
+        "topic": "",
+        "intervalCount": "1",
+        "intervalUnits": "s",
+        "submitIncompleteInterval": true,
+        "submitPerTopic": false,
+        "aggregationType": "sum",
+        "x": 200,
+        "y": 1320,
+        "wires": [
+            [
+                "676de3a3.fd2a3c"
+            ]
+        ]
+    },
+    {
+        "id": "676de3a3.fd2a3c",
+        "type": "calculator",
+        "z": "cb81e2af.25d26",
+        "name": "Convert Aggregate to Mbps",
+        "inputMsgField": "payload",
+        "outputMsgField": "payload",
+        "operation": "mult",
+        "constant": "0.008",
+        "round": true,
+        "decimals": "1",
+        "x": 200,
+        "y": 1380,
+        "wires": [
+            [
+                "69ceda27.906c54",
+                "fff05c25.60bbe",
+                "7c34fd56.db40d4"
+            ]
+        ]
+    },
+    {
+        "id": "99bd9daf.64f81",
+        "type": "comment",
+        "z": "7cef84f.ea74b7c",
+        "name": "Listen for Connect, Close, LWT messages",
+        "info": "",
+        "x": 230,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b8946988.8cf348",
+        "type": "mqtt in",
+        "z": "7cef84f.ea74b7c",
+        "name": "Listen for Connect Messages",
+        "topic": "demo/ota/clientstate/connected",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "1d0a7a91.eba225",
+                "e5158b4c.fd0e58"
+            ]
+        ]
+    },
+    {
+        "id": "5460500d.bb62c",
+        "type": "file",
+        "z": "7cef84f.ea74b7c",
+        "name": "Write Client State File",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 860,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d0a7a91.eba225",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "Set Filename",
+        "field": "filename",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "/home/ubuntu/clientstate/{{payload}}",
+        "output": "str",
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "5460500d.bb62c"
+            ]
+        ]
+    },
+    {
+        "id": "15249e7b.f9dec2",
+        "type": "mqtt in",
+        "z": "7cef84f.ea74b7c",
+        "name": "Listen for Close Messages",
+        "topic": "demo/ota/clientstate/closed",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "b11bf22b.8abe6",
+                "e5158b4c.fd0e58"
+            ]
+        ]
+    },
+    {
+        "id": "b11bf22b.8abe6",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "Set Filename",
+        "field": "filename",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "/home/ubuntu/clientstate/{{payload}}",
+        "output": "str",
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "2d24afe1.02ec"
+            ]
+        ]
+    },
+    {
+        "id": "2b48e98d.b28556",
+        "type": "mqtt in",
+        "z": "7cef84f.ea74b7c",
+        "name": "Listen for lwt Messages",
+        "topic": "demo/ota/clientstate/lwt",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
         "y": 280,
         "wires": [
             [
-                "cabbd6d8a5c54c0c"
+                "b11bf22b.8abe6",
+                "a4a92e91.f1d9d",
+                "e5158b4c.fd0e58"
+            ]
+        ]
+    },
+    {
+        "id": "2d24afe1.02ec",
+        "type": "file",
+        "z": "7cef84f.ea74b7c",
+        "name": "Delete Client State File",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "encoding": "none",
+        "x": 860,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "331e3f86.5a407",
+        "type": "file",
+        "z": "7cef84f.ea74b7c",
+        "name": "Track LWT messages (Disconnect Monitor)",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 930,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4a92e91.f1d9d",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "Set Filename",
+        "field": "filename",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "/home/ubuntu/disconnects/{{payload}}",
+        "output": "str",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "331e3f86.5a407"
+            ]
+        ]
+    },
+    {
+        "id": "b1206115.740c",
+        "type": "ui_list",
+        "z": "7cef84f.ea74b7c",
+        "group": "90a75f67.3dfdd",
+        "name": "Client State Table",
+        "order": 1,
+        "width": 6,
+        "height": 14,
+        "lineType": "two",
+        "actionType": "click",
+        "allowHTML": false,
+        "outputs": 1,
+        "topic": "",
+        "x": 150,
+        "y": 660,
+        "wires": [
+            [
+                "1a7a3479.60de8c"
+            ]
+        ]
+    },
+    {
+        "id": "1a7a3479.60de8c",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "Set Topic to unique Client Topic",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "demo/ota/{{payload.title}}/state",
+        "output": "str",
+        "x": 190,
+        "y": 740,
+        "wires": [
+            [
+                "383fcdcc.87ad32"
+            ]
+        ]
+    },
+    {
+        "id": "a1fd5211.0d88e",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "Format Message",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"url\": \"https://ota.mqtttest.com/100MB\",\"file\": \"100MB\",\"time\":\"{{timestamp}}\"}",
+        "output": "str",
+        "x": 150,
+        "y": 860,
+        "wires": [
+            [
+                "8be67af9.260c88"
+            ]
+        ]
+    },
+    {
+        "id": "8be67af9.260c88",
+        "type": "mqtt out",
+        "z": "7cef84f.ea74b7c",
+        "name": "Send to Client",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 140,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "f83430.52534bd",
+        "type": "ui_button",
+        "z": "7cef84f.ea74b7c",
+        "name": "",
+        "group": "2485a79e.244908",
+        "order": 8,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Refresh Client State",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "dc200233.9958a"
+            ]
+        ]
+    },
+    {
+        "id": "383fcdcc.87ad32",
+        "type": "change",
+        "z": "7cef84f.ea74b7c",
+        "name": "place timestamp ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 150,
+        "y": 800,
+        "wires": [
+            [
+                "a1fd5211.0d88e"
+            ]
+        ]
+    },
+    {
+        "id": "eb29c09f.f5c6",
+        "type": "template",
+        "z": "7cef84f.ea74b7c",
+        "name": "form JSON of Active Clients",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"title\":\"{{payload}}\",\"description\":\"Connected\",\"icon\":\"https://cdn.iconscout.com/icon/free/png-256/gas-pump-2664449-2208711.png\"}",
+        "output": "json",
+        "x": 180,
+        "y": 540,
+        "wires": [
+            [
+                "22875bc8.143814"
+            ]
+        ]
+    },
+    {
+        "id": "22875bc8.143814",
+        "type": "join",
+        "z": "7cef84f.ea74b7c",
+        "name": "Create Single Array of Active Clients",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "2",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 210,
+        "y": 600,
+        "wires": [
+            [
+                "b1206115.740c"
+            ]
+        ]
+    },
+    {
+        "id": "dc200233.9958a",
+        "type": "fs-file-lister",
+        "z": "7cef84f.ea74b7c",
+        "name": "Build List of Active Clients",
+        "start": "/home/ubuntu/clientstate",
+        "pattern": "vehicle*",
+        "folders": "*",
+        "hidden": false,
+        "lstype": "files",
+        "path": false,
+        "single": false,
+        "depth": 0,
+        "stat": false,
+        "showWarnings": false,
+        "x": 180,
+        "y": 480,
+        "wires": [
+            [
+                "eb29c09f.f5c6"
+            ]
+        ]
+    },
+    {
+        "id": "9d2f7895.73f228",
+        "type": "comment",
+        "z": "7cef84f.ea74b7c",
+        "name": "Build Client State Table",
+        "info": "",
+        "x": 160,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a29ce7c9.5bd4c8",
+        "type": "comment",
+        "z": "7cef84f.ea74b7c",
+        "name": "Individual Download (Action when user clicks on single state table entry)",
+        "info": "",
+        "x": 320,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "e5158b4c.fd0e58",
+        "type": "debug",
+        "z": "7cef84f.ea74b7c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5836a8be.372938",
+        "type": "fs-file-lister",
+        "z": "892db6cc.18af58",
+        "name": "",
+        "start": "/home/ubuntu/clientstate/",
+        "pattern": "vehicle*",
+        "folders": "*",
+        "hidden": false,
+        "lstype": "both",
+        "path": false,
+        "single": false,
+        "depth": "1",
+        "stat": false,
+        "showWarnings": true,
+        "x": 100,
+        "y": 220,
+        "wires": [
+            [
+                "4bb5a47e.a66c0c"
+            ]
+        ]
+    },
+    {
+        "id": "4efcdc39.3f5324",
+        "type": "ui_button",
+        "z": "892db6cc.18af58",
+        "name": "Rate Limit Message Release",
+        "group": "2485a79e.244908",
+        "order": 6,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Rate Limit Message Release",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "5836a8be.372938"
+            ]
+        ]
+    },
+    {
+        "id": "4bb5a47e.a66c0c",
+        "type": "delay",
+        "z": "892db6cc.18af58",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "9b9af25.0752e1"
+            ]
+        ]
+    },
+    {
+        "id": "d3de3dcd.8a289",
+        "type": "template",
+        "z": "892db6cc.18af58",
+        "name": "Format Message",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"url\": \"https://ota.mqtttest.com/100MB\",\"file\": \"100MB\",\"time\":\"{{timestamp}}\"}",
+        "output": "str",
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "ea242f11.d3665"
+            ]
+        ]
+    },
+    {
+        "id": "b124e6c8.7c7ad8",
+        "type": "change",
+        "z": "892db6cc.18af58",
+        "name": "place timestamp ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "d3de3dcd.8a289"
+            ]
+        ]
+    },
+    {
+        "id": "ea242f11.d3665",
+        "type": "mqtt out",
+        "z": "892db6cc.18af58",
+        "name": "Send to Client",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 120,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "9b9af25.0752e1",
+        "type": "template",
+        "z": "892db6cc.18af58",
+        "name": "Set Topic",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "demo/ota/{{payload}}/state",
+        "output": "str",
+        "x": 100,
+        "y": 340,
+        "wires": [
+            [
+                "b124e6c8.7c7ad8"
+            ]
+        ]
+    },
+    {
+        "id": "10078c08.e25044",
+        "type": "fs-file-lister",
+        "z": "5cc31913.54b088",
+        "name": "Check Client State Table",
+        "start": "/home/ubuntu/clientstate/",
+        "pattern": "vehicle*",
+        "folders": "*",
+        "hidden": false,
+        "lstype": "both",
+        "path": false,
+        "single": false,
+        "depth": "1",
+        "stat": false,
+        "showWarnings": true,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "b56fd61d.a8c558"
+            ]
+        ]
+    },
+    {
+        "id": "b5f3c018.10e8d",
+        "type": "ui_button",
+        "z": "5cc31913.54b088",
+        "name": "Intelligent Download Meter",
+        "group": "2485a79e.244908",
+        "order": 7,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Intelligent Download Meter",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "10078c08.e25044"
+            ]
+        ]
+    },
+    {
+        "id": "b56fd61d.a8c558",
+        "type": "delay",
+        "z": "5cc31913.54b088",
+        "name": "Rate Limit State Entries to 1 per 2sec",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "47e6a42c.bd905c"
+            ]
+        ]
+    },
+    {
+        "id": "65b020e.87cdbe",
+        "type": "template",
+        "z": "5cc31913.54b088",
+        "name": "Format MQTT message to client ",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"url\": \"https://ota.mqtttest.com/100MB\",\"file\": \"100MB\",\"time\":\"{{timestamp}}\"}",
+        "output": "str",
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "187e76b0.65a6c9"
+            ]
+        ]
+    },
+    {
+        "id": "499a41f6.13feb",
+        "type": "change",
+        "z": "5cc31913.54b088",
+        "name": "place timestamp on outgoing message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 440,
+        "wires": [
+            [
+                "65b020e.87cdbe"
+            ]
+        ]
+    },
+    {
+        "id": "187e76b0.65a6c9",
+        "type": "mqtt out",
+        "z": "5cc31913.54b088",
+        "name": "Send to Client via IOT Edge Connect",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 570,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "47e6a42c.bd905c",
+        "type": "template",
+        "z": "5cc31913.54b088",
+        "name": "Format Client Topic",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "demo/ota/{{payload}}/state",
+        "output": "str",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "f66d85ec.a444e8"
+            ]
+        ]
+    },
+    {
+        "id": "f66d85ec.a444e8",
+        "type": "file in",
+        "z": "5cc31913.54b088",
+        "name": "Read current Bandwidth Statistics",
+        "filename": "/home/ubuntu/bandwidth",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "d3776b97.837008"
+            ]
+        ]
+    },
+    {
+        "id": "c95ae42f.41d9c8",
+        "type": "delay",
+        "z": "5cc31913.54b088",
+        "name": "hold-down timer if bandwidth > 2.5Gbps",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 200,
+        "y": 380,
+        "wires": [
+            [
+                "f66d85ec.a444e8"
+            ]
+        ]
+    },
+    {
+        "id": "d3776b97.837008",
+        "type": "switch",
+        "z": "5cc31913.54b088",
+        "name": "Check if BW rate is above 2.5Gbps",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "2000",
+                "vt": "num"
+            },
+            {
+                "t": "lt",
+                "v": "2000",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "c95ae42f.41d9c8"
+            ],
+            [
+                "499a41f6.13feb"
             ]
         ]
     }
