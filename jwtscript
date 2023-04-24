@@ -1,4 +1,4 @@
 echo "client"$HOSTNAME >> clientid.txt
-export clientid=$(more clientid.txt);echo "{client:"$clientid",state:"connected"} >> clientidcon.txt
+export clientid=$(more clientid.txt);echo "{client:"$clientid",state:"connected"}" >> clientidcon.txt
 export clientid=$(more clientid.txt);sed -i "s/putclientidhere/$clientid/g" /data/settings.js
 /usr/src/node-red/node_modules/.bin/node-red -s /data/settings.js --userDir /data /data/flows.json
