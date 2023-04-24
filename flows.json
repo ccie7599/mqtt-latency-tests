@@ -1436,45 +1436,23 @@
         "z": "8cfabf217d39cd0b",
         "name": "Listen for Connect, Close, LWT messages",
         "info": "",
-        "x": 230,
-        "y": 100,
+        "x": 660,
+        "y": 40,
         "wires": []
-    },
-    {
-        "id": "259be2952560c507",
-        "type": "mqtt in",
-        "z": "8cfabf217d39cd0b",
-        "name": "Listen for Connect Messages",
-        "topic": "demo/ota/clientstate/connected",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "inputs": 0,
-        "x": 180,
-        "y": 160,
-        "wires": [
-            [
-                "fae8026f3ce53e33",
-                "5a6a80e5e0c2c51a"
-            ]
-        ]
     },
     {
         "id": "8ee7711197662b06",
         "type": "file",
         "z": "8cfabf217d39cd0b",
-        "name": "Write Client State File",
+        "name": "Write Client State File on Connect",
         "filename": "filename",
         "filenameType": "msg",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 860,
-        "y": 160,
+        "x": 720,
+        "y": 220,
         "wires": [
             []
         ]
@@ -1483,80 +1461,18 @@
         "id": "fae8026f3ce53e33",
         "type": "template",
         "z": "8cfabf217d39cd0b",
-        "name": "Set Filename",
+        "name": "Set Filename based on client id ",
         "field": "filename",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "/data/clientstate/{{payload}}",
+        "template": "/data/clientstate/{{payload.client}}",
         "output": "str",
-        "x": 470,
-        "y": 160,
-        "wires": [
-            [
-                "8ee7711197662b06"
-            ]
-        ]
-    },
-    {
-        "id": "dcf53e4a34408b5b",
-        "type": "mqtt in",
-        "z": "8cfabf217d39cd0b",
-        "name": "Listen for Close Messages",
-        "topic": "demo/ota/clientstate/closed",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 170,
+        "x": 190,
         "y": 220,
         "wires": [
             [
-                "25108b8a48b02c49",
-                "5a6a80e5e0c2c51a"
-            ]
-        ]
-    },
-    {
-        "id": "25108b8a48b02c49",
-        "type": "template",
-        "z": "8cfabf217d39cd0b",
-        "name": "Set Filename",
-        "field": "filename",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "/data/clientstate/{{payload}}",
-        "output": "str",
-        "x": 470,
-        "y": 220,
-        "wires": [
-            [
-                "99e63b4b84476605"
-            ]
-        ]
-    },
-    {
-        "id": "78c4256be97542aa",
-        "type": "mqtt in",
-        "z": "8cfabf217d39cd0b",
-        "name": "Listen for lwt Messages",
-        "topic": "demo/ota/clientstate/lwt",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 160,
-        "y": 280,
-        "wires": [
-            [
-                "25108b8a48b02c49",
-                "dc50cfb0371d99d9",
-                "5a6a80e5e0c2c51a"
+                "32f3882db1f98391"
             ]
         ]
     },
@@ -1564,15 +1480,15 @@
         "id": "99e63b4b84476605",
         "type": "file",
         "z": "8cfabf217d39cd0b",
-        "name": "Delete Client State File",
+        "name": "Delete Client State File on Close/LWT",
         "filename": "filename",
         "filenameType": "msg",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "delete",
         "encoding": "none",
-        "x": 860,
-        "y": 220,
+        "x": 710,
+        "y": 280,
         "wires": [
             []
         ]
@@ -1588,8 +1504,8 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 930,
-        "y": 280,
+        "x": 690,
+        "y": 340,
         "wires": [
             []
         ]
@@ -1598,15 +1514,15 @@
         "id": "dc50cfb0371d99d9",
         "type": "template",
         "z": "8cfabf217d39cd0b",
-        "name": "Set Filename",
+        "name": "Change File Path to Disconnect Monitor",
         "field": "filename",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "/data/disconnects/{{payload}}",
+        "template": "/data/disconnects/{{payload.client}}",
         "output": "str",
-        "x": 470,
-        "y": 280,
+        "x": 220,
+        "y": 340,
         "wires": [
             [
                 "ccb2822d242f60b4"
@@ -1628,7 +1544,7 @@
         "outputs": 1,
         "topic": "",
         "x": 150,
-        "y": 660,
+        "y": 740,
         "wires": [
             [
                 "136ebacdd0a6d1a1",
@@ -1648,7 +1564,7 @@
         "template": "demo/ota/{{payload.title}}/state",
         "output": "str",
         "x": 190,
-        "y": 740,
+        "y": 820,
         "wires": [
             [
                 "59bae2e06b655c02"
@@ -1667,7 +1583,7 @@
         "template": "{\"url\": \"https://ota.mqtttest.com/100MB\",\"file\": \"100MB\",\"time\":\"{{timestamp}}\"}",
         "output": "str",
         "x": 150,
-        "y": 860,
+        "y": 940,
         "wires": [
             [
                 "c6d10c8b0f670079"
@@ -1713,7 +1629,7 @@
         "topic": "",
         "topicType": "str",
         "x": 160,
-        "y": 420,
+        "y": 500,
         "wires": [
             [
                 "03219cf6e067f884"
@@ -1740,7 +1656,7 @@
         "to": "",
         "reg": false,
         "x": 150,
-        "y": 800,
+        "y": 880,
         "wires": [
             [
                 "cc08955e145a3e3f"
@@ -1759,7 +1675,7 @@
         "template": "{\"title\":\"{{payload}}\",\"description\":\"Connected\",\"icon\":\"https://cdn.iconscout.com/icon/free/png-256/gas-pump-2664449-2208711.png\"}",
         "output": "json",
         "x": 180,
-        "y": 540,
+        "y": 620,
         "wires": [
             [
                 "4a894c98a73ffddb"
@@ -1787,7 +1703,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 210,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "a5b9556a82b41949"
@@ -1801,7 +1717,7 @@
         "name": "Build Client State Table",
         "info": "",
         "x": 160,
-        "y": 380,
+        "y": 460,
         "wires": []
     },
     {
@@ -1811,23 +1727,7 @@
         "name": "Individual Download (Action when user clicks on single state table entry)",
         "info": "",
         "x": 320,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "5a6a80e5e0c2c51a",
-        "type": "debug",
-        "z": "8cfabf217d39cd0b",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 400,
+        "y": 780,
         "wires": []
     },
     {
@@ -1846,7 +1746,7 @@
         "stat": false,
         "showWarnings": false,
         "x": 180,
-        "y": 480,
+        "y": 560,
         "wires": [
             [
                 "8640955a572a4486"
@@ -1860,7 +1760,7 @@
         "name": "Chat",
         "info": "",
         "x": 890,
-        "y": 560,
+        "y": 640,
         "wires": []
     },
     {
@@ -1875,7 +1775,7 @@
         "template": "demo/ota/chat/{{payload.title}}",
         "output": "str",
         "x": 1000,
-        "y": 640,
+        "y": 720,
         "wires": [
             [
                 "bbac9a4f34a90e32"
@@ -1901,7 +1801,7 @@
         "className": "",
         "topicType": "msg",
         "x": 960,
-        "y": 800,
+        "y": 880,
         "wires": [
             [
                 "9256f1f38e000ea2"
@@ -1922,7 +1822,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1260,
-        "y": 840,
+        "y": 920,
         "wires": []
     },
     {
@@ -1945,7 +1845,7 @@
         "to": "",
         "reg": false,
         "x": 1150,
-        "y": 700,
+        "y": 780,
         "wires": [
             [
                 "6ef43ff35174bf66"
@@ -1956,7 +1856,7 @@
         "id": "84f5042d46cddeb6",
         "type": "mqtt in",
         "z": "8cfabf217d39cd0b",
-        "name": "Listen for Connect Messages",
+        "name": "Listen for Connection Event Log Topic",
         "topic": "demo/ota/clientstate",
         "qos": "2",
         "datatype": "auto-detect",
@@ -1965,31 +1865,13 @@
         "rap": false,
         "rh": "0",
         "inputs": 0,
-        "x": 190,
+        "x": 220,
         "y": 40,
         "wires": [
             [
-                "32f3882db1f98391",
-                "5a10e2329d604d55"
+                "63cbad784e451d76"
             ]
         ]
-    },
-    {
-        "id": "245ba3b3bd274f41",
-        "type": "debug",
-        "z": "8cfabf217d39cd0b",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 750,
-        "y": 40,
-        "wires": []
     },
     {
         "id": "69487eeabd15512f",
@@ -2012,7 +1894,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 940,
-        "y": 880,
+        "y": 960,
         "wires": [
             [
                 "6ef43ff35174bf66"
@@ -2135,7 +2017,7 @@
         "id": "32f3882db1f98391",
         "type": "switch",
         "z": "8cfabf217d39cd0b",
-        "name": "",
+        "name": "Read State value in json (Connected|Close|LWT)",
         "property": "payload.state",
         "propertyType": "msg",
         "rules": [
@@ -2158,28 +2040,109 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 570,
-        "y": 100,
+        "x": 250,
+        "y": 280,
         "wires": [
-            [],
-            [],
-            []
+            [
+                "8ee7711197662b06"
+            ],
+            [
+                "99e63b4b84476605"
+            ],
+            [
+                "dc50cfb0371d99d9",
+                "99e63b4b84476605"
+            ]
         ]
     },
     {
         "id": "5a10e2329d604d55",
         "type": "json",
         "z": "8cfabf217d39cd0b",
-        "name": "",
+        "name": "Convert to json ",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 490,
-        "y": 40,
+        "x": 140,
+        "y": 160,
         "wires": [
             [
-                "245ba3b3bd274f41"
+                "fae8026f3ce53e33",
+                "4c8e8482db111993"
             ]
+        ]
+    },
+    {
+        "id": "63cbad784e451d76",
+        "type": "change",
+        "z": "8cfabf217d39cd0b",
+        "name": "Clean up string prior to json conversion ",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "'",
+                "fromt": "str",
+                "to": "\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "5a10e2329d604d55"
+            ]
+        ]
+    },
+    {
+        "id": "4c8e8482db111993",
+        "type": "change",
+        "z": "8cfabf217d39cd0b",
+        "name": "Write Timestamp for log line ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 160,
+        "wires": [
+            [
+                "9552ac9b5ebee172"
+            ]
+        ]
+    },
+    {
+        "id": "9552ac9b5ebee172",
+        "type": "file",
+        "z": "8cfabf217d39cd0b",
+        "name": "Write events to log ",
+        "filename": "/data/clientstate/log",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 770,
+        "y": 160,
+        "wires": [
+            []
         ]
     },
     {
