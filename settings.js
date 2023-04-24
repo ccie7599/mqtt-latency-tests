@@ -15,6 +15,9 @@
  **/
 process.env.CLIENTID = "putclientidhere",
 process.env.JWT = "putjwthere",
+process.env.CLIENTCON = "putclientidconhere",
+process.env.CLIENTCLS = "putclientidclshere",
+process.env.CLIENTLWT = "putclientidlwthere",
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
