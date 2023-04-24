@@ -59,6 +59,14 @@
         "env": []
     },
     {
+        "id": "e9c3ce97643fda37",
+        "type": "tab",
+        "label": "Set Env Variables",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e0ba70b9fc869cea",
         "type": "tls-config",
         "name": "",
@@ -86,20 +94,20 @@
         "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
-        "birthTopic": "demo/security/clientstate/connected",
-        "birthQos": "0",
+        "birthTopic": "demo/ota/clientstate",
+        "birthQos": "1",
         "birthRetain": "false",
-        "birthPayload": "$(CLIENTID)",
+        "birthPayload": "$(CLIENTIDCON)",
         "birthMsg": {},
-        "closeTopic": "demo/security/clientstate/closed",
-        "closeQos": "0",
+        "closeTopic": "demo/ota/clientstate",
+        "closeQos": "1",
         "closeRetain": "false",
-        "closePayload": "$(CLIENTID)",
+        "closePayload": "$(CLIENTIDCLS)",
         "closeMsg": {},
-        "willTopic": "demo/security/clientstate/lastwill",
-        "willQos": "0",
+        "willTopic": "demo/ota/clientstate",
+        "willQos": "1",
         "willRetain": "false",
-        "willPayload": "$(CLIENTID)",
+        "willPayload": "$(CLIENTIDLWT)",
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
@@ -1443,6 +1451,7 @@
         "broker": "3c9fafa.7dd6a5",
         "nl": false,
         "rap": false,
+        "rh": "0",
         "inputs": 0,
         "x": 180,
         "y": 160,
@@ -1461,7 +1470,7 @@
         "filename": "filename",
         "filenameType": "msg",
         "appendNewline": true,
-        "createDir": false,
+        "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
         "x": 860,
@@ -1556,7 +1565,8 @@
         "type": "file",
         "z": "8cfabf217d39cd0b",
         "name": "Delete Client State File",
-        "filename": "",
+        "filename": "filename",
+        "filenameType": "msg",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "delete",
@@ -1572,9 +1582,10 @@
         "type": "file",
         "z": "8cfabf217d39cd0b",
         "name": "Track LWT messages (Disconnect Monitor)",
-        "filename": "",
+        "filename": "filename",
+        "filenameType": "msg",
         "appendNewline": true,
-        "createDir": false,
+        "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
         "x": 930,
@@ -1620,7 +1631,8 @@
         "y": 660,
         "wires": [
             [
-                "136ebacdd0a6d1a1"
+                "136ebacdd0a6d1a1",
+                "67c943f0610bfbaa"
             ]
         ]
     },
@@ -1807,7 +1819,7 @@
         "type": "debug",
         "z": "8cfabf217d39cd0b",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1824,7 +1836,7 @@
         "z": "8cfabf217d39cd0b",
         "name": "Build List of Active Clients",
         "start": "/data/clientstate",
-        "pattern": "vehicle*",
+        "pattern": "client*",
         "folders": "*",
         "hidden": false,
         "lstype": "files",
@@ -1840,6 +1852,283 @@
                 "8640955a572a4486"
             ]
         ]
+    },
+    {
+        "id": "74d27090b7977af3",
+        "type": "comment",
+        "z": "8cfabf217d39cd0b",
+        "name": "Chat",
+        "info": "",
+        "x": 890,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "67c943f0610bfbaa",
+        "type": "template",
+        "z": "8cfabf217d39cd0b",
+        "name": "Direct Chat - Change Topic to ClientID",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "demo/ota/chat/{{payload.title}}",
+        "output": "str",
+        "x": 1000,
+        "y": 640,
+        "wires": [
+            [
+                "bbac9a4f34a90e32"
+            ]
+        ]
+    },
+    {
+        "id": "6ef43ff35174bf66",
+        "type": "ui_text_input",
+        "z": "8cfabf217d39cd0b",
+        "name": "Text Chat Input",
+        "label": "",
+        "tooltip": "",
+        "group": "7472a7f101b1b2b6",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "200",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 960,
+        "y": 800,
+        "wires": [
+            [
+                "9256f1f38e000ea2"
+            ]
+        ]
+    },
+    {
+        "id": "9256f1f38e000ea2",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "bbac9a4f34a90e32",
+        "type": "change",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 700,
+        "wires": [
+            [
+                "6ef43ff35174bf66"
+            ]
+        ]
+    },
+    {
+        "id": "84f5042d46cddeb6",
+        "type": "mqtt in",
+        "z": "8cfabf217d39cd0b",
+        "name": "Listen for Connect Messages",
+        "topic": "demo/ota/clientstate/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 190,
+        "y": 40,
+        "wires": [
+            [
+                "245ba3b3bd274f41"
+            ]
+        ]
+    },
+    {
+        "id": "245ba3b3bd274f41",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "69487eeabd15512f",
+        "type": "ui_button",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "group": "7472a7f101b1b2b6",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear Chat Window",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": " {clear}",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 940,
+        "y": 880,
+        "wires": [
+            [
+                "6ef43ff35174bf66"
+            ]
+        ]
+    },
+    {
+        "id": "4db1db5071d9a5dc",
+        "type": "mqtt in",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 830,
+        "y": 1000,
+        "wires": [
+            [
+                "6bdc9b666ea559e2",
+                "f28d75a2ac562dfa"
+            ]
+        ]
+    },
+    {
+        "id": "3dd6f36f844dd3ab",
+        "type": "inject",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 590,
+        "y": 920,
+        "wires": [
+            [
+                "c254c66ceff475a2"
+            ]
+        ]
+    },
+    {
+        "id": "c254c66ceff475a2",
+        "type": "template",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "demo/ota/chat/{{env.CLIENTID}}",
+        "output": "str",
+        "x": 660,
+        "y": 1000,
+        "wires": [
+            [
+                "4db1db5071d9a5dc",
+                "60f18e7ed2a091ea"
+            ]
+        ]
+    },
+    {
+        "id": "6bdc9b666ea559e2",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "f28d75a2ac562dfa",
+        "type": "ui_text",
+        "z": "8cfabf217d39cd0b",
+        "group": "7472a7f101b1b2b6",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "View Messages",
+        "label": "View Messages",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1020,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "60f18e7ed2a091ea",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 940,
+        "wires": []
     },
     {
         "id": "eb8b6ce3cade45e3",
@@ -2544,7 +2833,7 @@
         "type": "debug",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2757,5 +3046,203 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "23ffb1976978b589",
+        "type": "inject",
+        "z": "e9c3ce97643fda37",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "CLIENTID",
+        "payloadType": "env",
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "678df16b47039de3",
+                "058ff1afe7fcbdd1"
+            ]
+        ]
+    },
+    {
+        "id": "678df16b47039de3",
+        "type": "exec",
+        "z": "e9c3ce97643fda37",
+        "command": "export CONNECTED=",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "dc235624f94974dd"
+            ],
+            [
+                "dc235624f94974dd"
+            ],
+            [
+                "dc235624f94974dd"
+            ]
+        ]
+    },
+    {
+        "id": "dc235624f94974dd",
+        "type": "debug",
+        "z": "e9c3ce97643fda37",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "058ff1afe7fcbdd1",
+        "type": "debug",
+        "z": "e9c3ce97643fda37",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f06a9a0342cf8454",
+        "type": "inject",
+        "z": "e9c3ce97643fda37",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "TEST",
+        "payloadType": "env",
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "47549298561c7f1b"
+            ]
+        ]
+    },
+    {
+        "id": "47549298561c7f1b",
+        "type": "debug",
+        "z": "e9c3ce97643fda37",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "231e176b5cb1c8dd",
+        "type": "template",
+        "z": "e9c3ce97643fda37",
+        "name": "",
+        "field": "connected",
+        "fieldType": "global",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{env.CLIENTID}}-connected",
+        "output": "str",
+        "x": 420,
+        "y": 520,
+        "wires": [
+            [
+                "840380af3b97c487"
+            ]
+        ]
+    },
+    {
+        "id": "7ee085aaad2b9fe9",
+        "type": "inject",
+        "z": "e9c3ce97643fda37",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 520,
+        "wires": [
+            [
+                "231e176b5cb1c8dd"
+            ]
+        ]
+    },
+    {
+        "id": "840380af3b97c487",
+        "type": "debug",
+        "z": "e9c3ce97643fda37",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 680,
+        "wires": []
     }
 ]
