@@ -1,6 +1,6 @@
 echo "client"$HOSTNAME >> clientid.txt
 export clientid=$(more clientid.txt);echo "{'client':'$clientid','state':'connected'}" >> clientidcon.txt
-export clientid=$(more clientid.txt);echo "{'client':'$clientid,'state':'closed'}" >> clientidcls.txt
+export clientid=$(more clientid.txt);echo "{'client':'$clientid','state':'closed'}" >> clientidcls.txt
 export clientid=$(more clientid.txt);echo "{'client':'$clientid','state':'lastwill'}" >> clientidlwt.txt
 export clientid=$(more clientid.txt);sed -i "s/putclientidhere/$clientid/g" /data/settings.js
 export clientid=$(more clientidcon.txt);sed -i "s/putclientidconhere/$clientid/g" /data/settings.js
