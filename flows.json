@@ -1592,8 +1592,8 @@
         "syntax": "mustache",
         "template": "{\"url\": \"https://ota.mqtttest.com/100MB\",\"file\": \"100MB\",\"time\":\"{{timestamp}}\"}",
         "output": "str",
-        "x": 150,
-        "y": 940,
+        "x": 210,
+        "y": 980,
         "wires": [
             [
                 "c6d10c8b0f670079"
@@ -1642,7 +1642,9 @@
         "y": 500,
         "wires": [
             [
-                "03219cf6e067f884"
+                "03219cf6e067f884",
+                "0395ac76b3d20ad9",
+                "aefe02c91315424a"
             ]
         ]
     },
@@ -1814,7 +1816,8 @@
         "y": 880,
         "wires": [
             [
-                "9256f1f38e000ea2"
+                "9256f1f38e000ea2",
+                "8df580c23c6d483a"
             ]
         ]
     },
@@ -1879,7 +1882,8 @@
         "y": 40,
         "wires": [
             [
-                "63cbad784e451d76"
+                "63cbad784e451d76",
+                "ee97343efca3c317"
             ]
         ]
     },
@@ -2154,6 +2158,176 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "8df580c23c6d483a",
+        "type": "mqtt out",
+        "z": "8cfabf217d39cd0b",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 1210,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f144f3f81c27c112",
+        "type": "comment",
+        "z": "8cfabf217d39cd0b",
+        "name": "State Query",
+        "info": "",
+        "x": 1030,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "10afd0b1c3a4b687",
+        "type": "mqtt in",
+        "z": "8cfabf217d39cd0b",
+        "name": "Listen for State Query Messages",
+        "topic": "demo/ota/clientstatequery",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "3c9fafa.7dd6a5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1090,
+        "y": 220,
+        "wires": [
+            [
+                "02a994def6ad135d",
+                "be06c09d4b678dd4"
+            ]
+        ]
+    },
+    {
+        "id": "02a994def6ad135d",
+        "type": "template",
+        "z": "8cfabf217d39cd0b",
+        "name": "Format Connected Message",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{'client':'{{env.CLIENTID}}','state':'connected'}",
+        "output": "str",
+        "x": 1160,
+        "y": 280,
+        "wires": [
+            [
+                "af035accb4eab295",
+                "ea919adb3de08a67"
+            ]
+        ]
+    },
+    {
+        "id": "af035accb4eab295",
+        "type": "mqtt out",
+        "z": "8cfabf217d39cd0b",
+        "name": "Send Connected Message to Clientstate event topic",
+        "topic": "demo/ota/clientstate",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 1180,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0395ac76b3d20ad9",
+        "type": "mqtt out",
+        "z": "8cfabf217d39cd0b",
+        "name": "demo/ota/clientstatequery",
+        "topic": "demo/ota/clientstatequery",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c9fafa.7dd6a5",
+        "x": 520,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ea919adb3de08a67",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1400,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "be06c09d4b678dd4",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "aefe02c91315424a",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "ee97343efca3c317",
+        "type": "debug",
+        "z": "8cfabf217d39cd0b",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 100,
+        "wires": []
     },
     {
         "id": "eb8b6ce3cade45e3",
