@@ -11,7 +11,8 @@
         "node-red-contrib-google-sheets": "~1.1.2",
         "node-red-contrib-moment": "~4.0.0",
         "node-red-dashboard": "~3.4.0",
-        "node-red-node-ui-list": "~0.3.6"
+        "node-red-node-ui-list": "~0.3.6",
+        "node-red-contrib-calculate": "~0.1.4"
     },
         "scripts": {
         "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS",
