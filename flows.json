@@ -293,73 +293,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "40f385c20a7ed5ab",
-        "type": "inject",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Inject epoch time every 1 second",
-        "props": [
-            {
-                "p": "payload.timestamp",
-                "v": "",
-                "vt": "date"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "10",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 220,
-        "y": 200,
-        "wires": [
-            [
-                "37110c7d66d4f033"
-            ]
-        ]
-    },
-    {
-        "id": "6e405e276ae5e4c1",
-        "type": "comment",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Publish message with current time",
-        "info": "",
-        "x": 220,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "a3570a9c9ebca9c6",
-        "type": "mqtt out",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Publish latency test message to MQTT",
-        "topic": "scores/latency-test",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "3c9fafa.7dd6a5",
-        "x": 700,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "f2cbffe58bdce935",
-        "type": "comment",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Receive Test Messages and Measure Latency",
-        "info": "",
-        "x": 250,
-        "y": 300,
-        "wires": []
-    },
-    {
         "id": "6eb2394e58986df1",
         "type": "mqtt in",
         "z": "e3dc46e26aa5dc2d",
@@ -372,8 +305,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 260,
-        "y": 360,
+        "x": 240,
+        "y": 320,
         "wires": [
             [
                 "e02dc13b190d8117"
@@ -414,113 +347,38 @@
         "correl": "",
         "expiry": "",
         "broker": "3c9fafa.7dd6a5",
-        "x": 220,
-        "y": 540,
+        "x": 1280,
+        "y": 740,
         "wires": []
     },
     {
-        "id": "7e2f7f49bbda1efb",
-        "type": "comment",
+        "id": "679bc17c490e1e4c",
+        "type": "debug",
         "z": "e3dc46e26aa5dc2d",
-        "name": "Listen and Graph Results",
-        "info": "",
-        "x": 190,
-        "y": 580,
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 420,
         "wires": []
     },
     {
-        "id": "433b3947a03535a1",
-        "type": "mqtt in",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Listen for Latency Result messages",
-        "topic": "scores/latency-results",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "3c9fafa.7dd6a5",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 220,
-        "y": 620,
-        "wires": [
-            [
-                "bdaf783791137484"
-            ]
-        ]
-    },
-    {
-        "id": "b808e203845b4aa1",
-        "type": "ui_chart",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Graph Latency Results",
-        "group": "6868ab09dbcd3929",
-        "order": 0,
-        "width": "18",
-        "height": "10",
-        "label": "Publish/Subscribe Latency",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "1000",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 180,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "37110c7d66d4f033",
+        "id": "2d05e99d94147605",
         "type": "change",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
         "rules": [
             {
                 "t": "set",
-                "p": "payload.publisher.countryCode",
+                "p": "payload",
                 "pt": "msg",
-                "to": "countryCode",
-                "tot": "global",
-                "dc": true
-            },
-            {
-                "t": "set",
-                "p": "payload.publisher.org",
-                "pt": "msg",
-                "to": "org",
-                "tot": "global",
-                "dc": true
-            },
-            {
-                "t": "set",
-                "p": "payload.publisher.regionName",
-                "pt": "msg",
-                "to": "regionName",
-                "tot": "global",
+                "to": "payload.latency",
+                "tot": "msg",
                 "dc": true
             }
         ],
@@ -529,34 +387,35 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 200,
+        "x": 750,
+        "y": 600,
         "wires": [
             [
-                "a3570a9c9ebca9c6",
-                "85ebf53fbb2a9fcb",
-                "d112fe316908e8ce"
+                "f96bbd6b6759d1e7"
             ]
         ]
     },
     {
-        "id": "679bc17c490e1e4c",
-        "type": "debug",
+        "id": "f96bbd6b6759d1e7",
+        "type": "calculate",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 480,
-        "wires": []
+        "pauseType": "rate",
+        "calculation": "average",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "50",
+        "x": 760,
+        "y": 760,
+        "wires": [
+            [
+                "f8335962a86872e6",
+                "038af8e705a2ebea"
+            ]
+        ]
     },
     {
-        "id": "2d05e99d94147605",
+        "id": "74f7323cae3e57d1",
         "type": "change",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
@@ -591,16 +450,17 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 220,
-        "y": 480,
+        "x": 1080,
+        "y": 600,
         "wires": [
             [
-                "5cbe8bdf544b1489"
+                "5cbe8bdf544b1489",
+                "d3d53638761f9583"
             ]
         ]
     },
     {
-        "id": "d677fa015ce7a2b6",
+        "id": "d3d53638761f9583",
         "type": "debug",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
@@ -612,59 +472,31 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
-        "y": 600,
+        "x": 1290,
+        "y": 620,
         "wires": []
     },
     {
-        "id": "bdaf783791137484",
+        "id": "f8335962a86872e6",
         "type": "template",
         "z": "e3dc46e26aa5dc2d",
-        "name": "Change Topic to Publish/Subscribe locations",
-        "field": "topic",
+        "name": "convert to json ",
+        "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "From: {{payload.publisher.org}} - {{payload.publisher.countryCode}} - {{payload.publisher.regionName}} To: {{payload.subscriber.org}} - {{payload.subscriber.countryCode}} - {{payload.subscriber.regionName}} ",
-        "output": "str",
-        "x": 250,
-        "y": 680,
+        "template": "{\"latency\":{{payload}}}",
+        "output": "json",
+        "x": 980,
+        "y": 700,
         "wires": [
             [
-                "7e15a4648f1f766f"
+                "74f7323cae3e57d1"
             ]
         ]
     },
     {
-        "id": "7e15a4648f1f766f",
-        "type": "change",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Set Latency as Payload for graphing",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.latency",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 740,
-        "wires": [
-            [
-                "b808e203845b4aa1",
-                "d677fa015ce7a2b6"
-            ]
-        ]
-    },
-    {
-        "id": "85ebf53fbb2a9fcb",
+        "id": "038af8e705a2ebea",
         "type": "debug",
         "z": "e3dc46e26aa5dc2d",
         "name": "",
@@ -672,128 +504,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "d112fe316908e8ce",
-        "type": "mqtt out",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Publish latency test message to MQTT",
-        "topic": "scores/latency/test1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "90ec2e579c374db4",
-        "x": 980,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "0a926ebb1f0af31e",
-        "type": "mqtt in",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Subscribe to Latency Test Messages via MQTT",
-        "topic": "scores/latency/test1",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "90ec2e579c374db4",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 980,
-        "y": 360,
-        "wires": [
-            [
-                "4c160d40a8729525"
-            ]
-        ]
-    },
-    {
-        "id": "4c160d40a8729525",
-        "type": "function",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "Measure Publish-Subscribe Latency of message",
-        "func": "var now = Date.now();\nvar then = msg.payload.timestamp;\nmsg.payload.latency = now - then;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 420,
-        "wires": [
-            [
-                "967c225b6c2c7b23",
-                "c1a9265d0253ba27"
-            ]
-        ]
-    },
-    {
-        "id": "c1a9265d0253ba27",
-        "type": "change",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.subscriber.countryCode",
-                "pt": "msg",
-                "to": "countryCode",
-                "tot": "global",
-                "dc": true
-            },
-            {
-                "t": "set",
-                "p": "payload.subscriber.org",
-                "pt": "msg",
-                "to": "org",
-                "tot": "global",
-                "dc": true
-            },
-            {
-                "t": "set",
-                "p": "payload.subscriber.regionName",
-                "pt": "msg",
-                "to": "regionName",
-                "tot": "global",
-                "dc": true
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 940,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "967c225b6c2c7b23",
-        "type": "debug",
-        "z": "e3dc46e26aa5dc2d",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1270,
-        "y": 480,
+        "x": 870,
+        "y": 820,
         "wires": []
     },
     {
